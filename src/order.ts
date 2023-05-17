@@ -1,3 +1,4 @@
+import { Item } from "./item"
 import { User } from "./order-users"
 export interface Order {
   quantity: number
@@ -10,5 +11,6 @@ export interface Order {
   last_update: string
   id: string
   region: string
+  item: Item | undefined
 }
 
