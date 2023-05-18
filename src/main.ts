@@ -15,6 +15,7 @@ async function main() {
     if (options.items !== undefined && !Array.isArray(options.items)) {
         throw new Error(`Items is not an array`)
     };
+    let items = options.items ?? ITEM_NAMES_TO_BUY;
 console.log('Options: ', options);
 console.log('Remaining arguments: ', program.args);
     let result = await axios.get<ItemsApiResponse>('https://api.warframe.market/v1/items');
