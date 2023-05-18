@@ -41,7 +41,7 @@ let sortedOrders =  coolOrders.sort( (order1 , order2) =>{
 
      let messages = sortedOrders.map ((order) => {
         let sum = Math.min(order.platinum , 3);
-        return `\w ${order.user.ingame_name} Hello! You have WTS order: ${order.item!.item_name} for ${order.platinum}. I would like to buy all ${order.quantity} for ${Math.min(3, order.platinum)*order.quantity} if you are interested :)`
+        return `/w ${order.user.ingame_name} Hello! You have WTS order: ${order.item!.item_name} for ${order.platinum}. I would like to buy all ${order.quantity} for ${Math.min(3, order.platinum)*order.quantity} if you are interested :)`
      })
 
 console.log(messages)
