@@ -21,7 +21,7 @@ console.log('Remaining arguments: ', program.args);
     let result = await axios.get<ItemsApiResponse>('https://api.warframe.market/v1/items');
     let allItems = result.data.payload.items
     let itemsToBuy = allItems.filter((item) => {
-        return options.items.includes(item.item_name);
+        return items.includes(item.item_name);
     });
     let allOrders: Array<Order> = [];
     for (const itemToBuy of itemsToBuy) {
