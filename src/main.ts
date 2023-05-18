@@ -12,6 +12,9 @@ async function main() {
 .option('-i, --items [items...]', 'specify item')        
   program.parse();
   let options = program.opts();
+    if (options.items !== undefined && !Array.isArray(options.items)) {
+        throw new Error(`Items is not an array`)
+    };
 console.log('Options: ', options);
 console.log('Remaining arguments: ', program.args);
     let result = await axios.get<ItemsApiResponse>('https://api.warframe.market/v1/items');
