@@ -11,9 +11,6 @@ async function main() {
     let itemsToBuy = allItems.filter((item) => {
         return ITEM_NAMES_TO_BUY.includes(item.item_name);
     });
-
-    // let firstElement = itemsToBuy[0];
-    // firstElement.url_name
     let allOrders: Array<Order> = [];
     for (const itemToBuy of itemsToBuy) {
         let ordersApiResponse = await axios.get<OrdersApiResponce>(`https://api.warframe.market/v1/items/${itemToBuy.url_name}/orders`);
@@ -34,10 +31,6 @@ let coolOrders: Array<Order> = allOrders.filter ((coolOrder) =>{
 let sortedOrders =  coolOrders.sort( (order1 , order2) =>{
         return order1.user.id.localeCompare(order2.user.id);
       });
-
-    //   for(const order of sortedOrders) {
-    //     console.log(order.user.id)
-    //  }
 
      let messages = sortedOrders.map ((order) => {
         let sum = Math.min(order.platinum , 3);
