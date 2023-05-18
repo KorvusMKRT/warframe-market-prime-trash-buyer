@@ -1,7 +1,6 @@
 import axios from "axios";
 import { ItemsApiResponse } from "./items-api-response";
 import { OrdersApiResponce } from "./orders-api-response";
-import { ITEM_NAMES_TO_BUY } from "./item-names-to-buy";
 import { Order } from "./order";
 const { program } = require('commander');
 
