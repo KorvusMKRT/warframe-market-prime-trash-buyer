@@ -7,7 +7,7 @@ const { program } = require('commander');
 main();
 async function main() {
     program
-  .option('-i, --items <items...>','specify item')
+.option('-i, --items [items...]', 'specify item')        
   program.parse();
   let options = program.opts();
 console.log('Options: ', options);
