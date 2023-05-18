@@ -3,13 +3,20 @@ import { ItemsApiResponse } from "./items-api-response";
 import { OrdersApiResponce } from "./orders-api-response";
 import { ITEM_NAMES_TO_BUY } from "./item-names-to-buy";
 import { Order } from "./order";
+const { program } = require('commander');
+
 main();
 async function main() {
+    program
+  .option('-i, --items <items...>','specify item')
+  program.parse();
+  let options = program.opts();
+console.log('Options: ', options);
+console.log('Remaining arguments: ', program.args);
     let result = await axios.get<ItemsApiResponse>('https://api.warframe.market/v1/items');
     let allItems = result.data.payload.items
-
     let itemsToBuy = allItems.filter((item) => {
-        return ITEM_NAMES_TO_BUY.includes(item.item_name);
+        return options.items.includes(item.item_name);
     });
     let allOrders: Array<Order> = [];
     for (const itemToBuy of itemsToBuy) {
